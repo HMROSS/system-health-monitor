@@ -1,6 +1,7 @@
 import psutil
 import platform
 import time
+from datetime import datetime
 
 
 def get_uptime():
@@ -40,3 +41,11 @@ def collect_system_usage():
         "Disk": disk_use
     }
     return system_usage
+
+
+def get_timestamp():
+    now = datetime.now()
+
+    formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+
+    return formatted_time
