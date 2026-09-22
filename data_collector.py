@@ -33,7 +33,13 @@ def collect_system_info():
 def collect_system_usage():
     cpu_use = psutil.cpu_percent(interval=1)
     ram_use = psutil.virtual_memory().percent
-    disk_use = psutil.disk_usage("C:\\").percent
+
+    operating_system = platform.system()
+
+    if operating_system == "Windows":
+        disk_use = psutil.disk_usage("C:\\").percent
+    else:
+        disk_use = psutil.disk_usage("/").percent
 
     system_usage = {
         "CPU": cpu_use,
