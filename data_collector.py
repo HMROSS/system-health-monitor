@@ -36,10 +36,13 @@ def collect_system_usage():
 
     operating_system = platform.system()
 
-    if operating_system == "Windows":
-        disk_use = psutil.disk_usage("C:\\").percent
-    else:
-        disk_use = psutil.disk_usage("/").percent
+    try:
+        if operating_system == "Windows":
+            disk_use = psutil.disk_usage("C:\\").percent
+        else:
+            disk_use = psutil.disk_usage("/").percent
+    except:
+        disk_use = None
 
     system_usage = {
         "CPU": cpu_use,

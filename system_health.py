@@ -1,6 +1,9 @@
 
 
 def check_health(value):
+    if value is None:
+        return "ERROR"
+
     if value >= 90:
         return "CRITICAL"
     elif value >= 70:
